@@ -7,8 +7,8 @@ using std::endl;
 using std::cin;
 const int NUM_RANKS = 13;
 const int NUM_SUITS = 4;
-//static const char* Suit[NUM_SUITS] = {"Club", "Diamond", "Heart", "Spade"};
-const char Suit[ 4 ] = { 0x05, 0x04, 0x03, 0x06 };
+static const char* Suit[NUM_SUITS] = {"Club", "Diamond", "Heart", "Spade"};
+//const char Suit[ 4 ] = { 0x05, 0x04, 0x03, 0x06 };
 static const char * Rank[NUM_RANKS] = {"Ace", "Deuce", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" };
 /************************************************************************
 * Class: card

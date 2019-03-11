@@ -81,20 +81,21 @@ bool BlackJack::Menu1()
 	flag_PlayerBust = false;
 
 	int menuchoice;
-	
+	system("PAUSE");
+	system("CLS");
 	cout << "1) Bet\n"
 		 << "2) Exit\n";
 	cin >> menuchoice;
 	if (menuchoice == 1)
 	{
-		cout << "you have this much money: ";
+		cout << "You have $";
 		cout << Player1.CheckBank() << endl;
-		cout << "How much to bet: ";
+		cout << "How much would you like to bet: ";
 		cin >> currentbet;
 		while(currentbet > Player1.CheckBank())
 		{
 			cout << "You dont have that much money!\n"
-				 << "Enter an amount to bet: ";
+				 << "How much would you like to bet: ";
 			cin >> currentbet;
 		}
 		Deal();
@@ -126,17 +127,17 @@ bool BlackJack::Menu1()
 
 		if(Player1.GetHandValue() > theDealer.GetHandValue())
 		{
-			cout << "\n u win, u had better hand\n";
+			cout << "\n You win, you had a better hand!\n";
 			Player1.Winnings(currentbet);
 		}
 		else if (Player1.GetHandValue() < theDealer.GetHandValue())
 		{
-			cout << "\n u lose, dealer had better hand\n";
+			cout << "\n You lose, dealer had a better hand!\n";
 			Player1.Spend(currentbet);
 		}
 		else
 		{
-			cout << "\n its a tie, same value\n";
+			cout << "\n It's a tie!\n";
 		}
 	}
 	else
@@ -174,34 +175,34 @@ bool BlackJack::FlagCheck()
 	if(flag_PlayerBlackjack && flag_DealerBlackjack)
 	{
 		DisplayHands(2);
-		cout << "\n its a tie, both blackjack\n";
+		cout << "\n Its a tie, both got blackjack!!\n";
 		return true;
 	}
 	else if (flag_DealerBlackjack)
 	{
 		DisplayHands(2);
-		cout << "\n u lose, dealer blackjack\n";
+		cout << "\n You lose, dealer had blackjack!\n";
 		Player1.Spend(currentbet);
 		return true;
 	}
 	else if (flag_PlayerBlackjack)
 	{
 		DisplayHands(2);
-		cout << "\n u win, blackjack!\n";
+		cout << "\n You win, you got a blackjack!\n";
 		Player1.Winnings(currentbet);
 		return true;
 	}
 	else if(flag_PlayerBust)
 	{
 		DisplayHands(2);
-		cout << "\n u lose, you busted\n";
+		cout << "\n You lose, you busted!\n";
 		Player1.Spend(currentbet);
 		return true;
 	}
 	else if(flag_DealerBust)
 	{
 		DisplayHands(2);
-		cout << "\n u win, dealer busted\n";
+		cout << "\n You win, dealer busted!\n";
 		Player1.Winnings(currentbet);
 		return true;
 	}
@@ -246,10 +247,11 @@ bool BlackJack::Menu2()
 ***********************************/
 void BlackJack::DisplayHands(int x)
 {
-	cout << "\n\nYour cards are: \n";
+	system("CLS");
+	cout << "Your cards are: \n";
 	Player1.DisplayMyHand(2);
 	cout << endl;
-	cout << "total value: ";
+	cout << "Yotal value: ";
 	cout << Player1.GetHandValue();
 	cout << endl;
 	cout << "The Dealers cards are: \n";
